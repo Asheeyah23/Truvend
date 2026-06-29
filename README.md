@@ -191,6 +191,7 @@ Our goals within six months include:
 •  Higher average transaction values
 
 By improving trust, Truvend helps legitimate sellers grow while protecting buyers from fraud.  
+
 ---
 
 ## Vision
