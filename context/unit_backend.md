@@ -154,7 +154,7 @@ Commit format: `feat(U#.#): short description`
 
 ## Phase 2: Backend — Listings & AI Engine
 
-- [ ] **Unit 2.1: Listings Service & CRUD Routes**
+- [x] **Unit 2.1: Listings Service & CRUD Routes**
   - Create `backend/src/services/listings.service.ts` — `createListing`, `getListing(id)`, `getActiveListings()`, `updateListing(id, sellerId, data)`, `deleteListing(id, sellerId)`.
   - Ownership check: update/delete only succeed if `seller_id` matches the authenticated user — otherwise throw a `403` `AppError`.
   - Create `backend/src/routes/listings.ts` and `backend/src/controllers/listings.controller.ts` implementing the five endpoints from `architecture.md`:
@@ -165,7 +165,7 @@ Commit format: `feat(U#.#): short description`
     - `DELETE /api/listings/:id` (seller only, behind `requireAuth`)
   - Verify: full CRUD works via curl/Postman. A seller cannot edit another seller's listing (403).
 
-- [ ] **Unit 2.2: Gemini Risk Analysis Service**
+- [x] **Unit 2.2: Gemini Risk Analysis Service**
   - Install `@google/generative-ai`.
   - Create `backend/src/services/gemini.service.ts`.
   - Export `analyseListing(title: string, description: string, price: number): Promise<GeminiRiskAnalysis>`.
@@ -194,7 +194,7 @@ Commit format: `feat(U#.#): short description`
   - **Open question, not yet decided** — flag rather than guess: does listing creation block on this call (synchronous scoring before the `POST /api/listings` response returns) or does it run after creation and update the listing row asynchronously? Confirm with the team before wiring Unit 2.3; default to synchronous for the hackathon demo unless told otherwise, since it's simpler and the listing volume is small.
   - Verify: `analyseListing('iPhone 15 Pro, brand new, sealed', 'Selling cheap, urgent, no returns', 15000)` returns a `high_risk`-leaning score given the price/description mismatch.
 
-- [ ] **Unit 2.3: Wire AI Engine into Listing Creation**
+- [x] **Unit 2.3: Wire AI Engine into Listing Creation**
   - Update `listings.service.ts` `createListing` to call `analyseListing` and persist `risk_score`, `risk_level`, `risk_explanation` on the new row (per the decision made in Unit 2.2).
   - Listing GET endpoints must always return these three fields — never omit them, since the frontend's risk-gating logic depends on `risk_level` being present.
   - Verify: a newly created listing has non-null `risk_score`/`risk_level`/`risk_explanation` when fetched via `GET /api/listings/:id`.

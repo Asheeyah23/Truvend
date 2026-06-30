@@ -2,7 +2,7 @@
 
 ## Current phase
 
-Phase 1 code complete. Awaiting Supabase project creation + schema run before Phase 1 can be fully verified.
+Phase 2 code complete. Phase 1 + 2 verification requires Supabase project + `.env` to be populated.
 
 ## Completed
 
@@ -11,6 +11,7 @@ Phase 1 code complete. Awaiting Supabase project creation + schema run before Ph
 - `/context` documentation set established (this file and its five siblings).
 - **Unit 0.1**: `.gitignore` added at repo root (covers `node_modules`, `.env`, `.env.local`, `.next`, `dist`, `.DS_Store`).
 - **Units 1.1–1.4**: Backend scaffolded — `backend/` initialized, all Phase 1 source files written, 98 packages installed. Awaiting Supabase project + schema to fully verify Unit 1.1.
+- **Units 2.1–2.3**: Listings CRUD + Gemini risk scoring implemented. `@google/generative-ai@0.24.1` installed. Scoring is synchronous on `createListing` (decision: simpler for hackathon demo scope — revisit if volume grows). `deleteListing` is a soft delete (`is_active = false`) to preserve rows for order references.
 
 ## In progress
 
@@ -57,3 +58,4 @@ Phase 1 code complete. Awaiting Supabase project creation + schema run before Ph
 - 2026-06-30: Established all six `/context` files and `CLAUDE.md` from the Truvend Product Brief and Backend Architecture Guide. No code exists yet — this is the starting point for the build.
 - 2026-06-30: Phase 0 complete — `.gitignore` added (Unit 0.1). Phase 1 begins next.
 - 2026-06-30: Phase 1 backend scaffold complete (Units 1.1–1.4). All source files written, npm install succeeded. Unit 1.1 verification pending Supabase project creation and SQL schema run by the team.
+- 2026-06-30: Phase 2 complete (Units 2.1–2.3). Decided synchronous Gemini scoring on listing creation (open question from unit_backend.md resolved: synchronous, per default). Soft delete chosen for listings. `GEMINI_API_KEY` added to `.env.example`.
